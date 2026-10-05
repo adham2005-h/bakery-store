@@ -45,6 +45,7 @@ include 'includes/header.php';
                 </div>
 
                 <form action="cart_action.php" method="POST" class="add-to-cart-form">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
                     <input type="hidden" name="action" value="add">
                     <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                     <input type="hidden" name="redirect" value="product.php?id=<?php echo $product['id']; ?>">

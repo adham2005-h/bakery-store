@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+// Keep one token for this session so forms in different tabs still work.
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 $host = '127.0.0.1';
 $port = '3307';
 $dbname = 'bakery_store';
@@ -19,7 +24,9 @@ $options = [
 try {
     $pdo = new PDO($dsn, $username, $password, $options);
 } catch (PDOException $e) {
-    die('فشل الاتصال بقاعدة البيانات: ' . $e->getMessage());
+    error_log($e->getMessage());
+    http_response_code(500);
+    die('تعذر الاتصال بقاعدة البيانات. تحقق من إعدادات السيرفر المحلي.');
 }
 
 if (!isset($_SESSION['cart'])) {
