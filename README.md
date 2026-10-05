@@ -1,40 +1,34 @@
-# مخبز الدفء - Bakery & Sweets Store
+# Bakery & Sweets Store
 
-## التقنيات المستخدمة
-HTML5, CSS3, JavaScript (Vanilla), PHP, MySQL (PDO)
+A bakery storefront built with PHP and MySQL. I used database-backed product pages and a PHP session to manage the shopping cart.
 
-## خطوات التشغيل
+## Features
 
-1. ضع مجلد المشروع داخل مجلد السيرفر المحلي (مثال: `htdocs` في XAMPP أو `www` في WAMP).
-2. شغّل خادم Apache و MySQL من لوحة تحكم XAMPP/WAMP.
-3. افتح phpMyAdmin وأنشئ قاعدة بيانات جديدة أو استورد الملف `database.sql` مباشرة (سينشئ قاعدة البيانات والجداول والبيانات تلقائياً).
-4. تحقق من إعدادات الاتصال في `includes/db.php`:
-   - `host`: localhost
-   - `dbname`: bakery_store
-   - `username`: root
-   - `password`: (فارغة افتراضياً في XAMPP)
-5. افتح المتصفح على: `http://localhost/bakery-site/index.php`
+- Browse products and view product details.
+- Add products to the cart.
+- Change quantities, remove items and empty the cart.
+- Keep the cart available during the current session.
 
-## هيكلية المشروع
+## Technologies
 
-```
-bakery-site/
-├── database.sql
-├── index.php
-├── products.php
-├── product.php
-├── cart.php
-├── cart_action.php
-├── includes/
-│   ├── db.php
-│   ├── header.php
-│   └── footer.php
-├── css/
-│   └── style.css
-└── js/
-    └── main.js
-```
+HTML, CSS, JavaScript, PHP and MySQL with PDO.
 
-## ملاحظات
-- سلة المشتريات تعتمد على PHP Session، لذا تبقى محفوظة أثناء تصفح الموقع حتى إغلاق المتصفح أو إفراغها يدوياً.
-- الصور مأخوذة من روابط Unsplash مباشرة، لذا يجب توفر اتصال بالإنترنت لعرضها.
+## Run locally
+
+1. Place the project in your local server folder, such as XAMPP `htdocs` or WAMP `www`.
+2. Start Apache and MySQL.
+3. Import `database.sql` using phpMyAdmin to create the database, tables and sample data.
+4. Review `includes/db.php`: database `bakery_store`, host `127.0.0.1`, port `3307`. Set the credentials and port to match your local environment.
+5. Open the project folder through localhost, for example `http://localhost/bakery-site/index.php` if your folder is named `bakery-site`.
+
+## Main files
+
+`index.php`, `products.php`, `product.php`, `cart.php`, `cart_action.php`, `database.sql`, `includes/`, `css/` and `js/`.
+
+## Project scope
+
+The cart demonstrates storefront interactions; it does not process payments or submit real orders. Externally hosted images require an internet connection.
+
+## Author
+
+Adham Muayad Hashem
