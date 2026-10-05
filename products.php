@@ -52,6 +52,7 @@ include 'includes/header.php';
                     <h3><a href="product.php?id=<?php echo $product['id']; ?>"><?php echo htmlspecialchars($product['name']); ?></a></h3>
                     <p class="product-price"><?php echo number_format($product['price'], 2); ?> ₪</p>
                     <form action="cart_action.php" method="POST">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="action" value="add">
                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                         <input type="hidden" name="redirect" value="products.php<?php echo $selectedSlug !== '' ? '?category=' . urlencode($selectedSlug) : ''; ?>">

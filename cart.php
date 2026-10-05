@@ -51,6 +51,7 @@ include 'includes/header.php';
                     <p><?php echo number_format($item['product']['price'], 2); ?> ₪</p>
                 </div>
                 <form action="cart_action.php" method="POST" class="cart-qty-form">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
                     <input type="hidden" name="action" value="update">
                     <input type="hidden" name="product_id" value="<?php echo $item['product']['id']; ?>">
                     <input type="number" name="quantity" value="<?php echo $item['qty']; ?>" min="1" max="20">
@@ -58,6 +59,7 @@ include 'includes/header.php';
                 </form>
                 <p class="cart-subtotal"><?php echo number_format($item['subtotal'], 2); ?> ₪</p>
                 <form action="cart_action.php" method="POST">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
                     <input type="hidden" name="action" value="remove">
                     <input type="hidden" name="product_id" value="<?php echo $item['product']['id']; ?>">
                     <button type="submit" class="remove-btn" aria-label="حذف">✕</button>
@@ -70,10 +72,11 @@ include 'includes/header.php';
             <h2>الإجمالي: <?php echo number_format($total, 2); ?> ₪</h2>
             <div class="cart-actions">
                 <form action="cart_action.php" method="POST">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
                     <input type="hidden" name="action" value="clear">
                     <button type="submit" class="btn btn-outline">إفراغ السلة</button>
                 </form>
-                <button type="button" class="btn btn-primary" onclick="alert('تم تأكيد الطلب، شكراً لك!')">إتمام الطلب</button>
+                <p>هذه سلة تجريبية؛ لا يتم إرسال طلبات أو تنفيذ دفع في هذا المشروع.</p>
             </div>
         </div>
         <?php endif; ?>
